@@ -13,6 +13,6 @@ export type TFileSystemIs = {
 export type TFileSystemManipulate = {
   copyOne: (from: string, to: string, options?: CopyOptions) => Promise<void>
   copyMany: (from: string[], to: string, options?: CopyOptions) => Promise<void>
-  deleteOne: (from: string, options: RmOptions) => Promise<void>
-  deleteMany: (from: string[], options: RmOptions) => Promise<void>
+  deleteOne: (from: string, options?: RmOptions) => Promise<void>
+  deleteMany: (from: string[], options?: RmOptions) => Promise<void>
 }
