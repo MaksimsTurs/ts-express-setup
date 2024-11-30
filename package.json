@@ -1,10 +1,10 @@
 {
   "name": "ts-express-setup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./output/index.js",
   "scripts": {
     "dev:start": "npx nodemon",
-    "prod:build": "npx tsc",
+    "prod:build": "tsc --project tsconfig.node.json",
     "prod:start": "node output/index.js"
   },
   "license": "ISC",
