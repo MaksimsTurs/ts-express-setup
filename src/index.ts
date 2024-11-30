@@ -1,10 +1,10 @@
-import express from 'express'
+import express, { type Express } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 
 import startListenServer from './configuration/startListenServer.config'
 
-const Server = express()
+const Server: Express = express()
 
 dotenv.config()
 

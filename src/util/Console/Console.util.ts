@@ -1,16 +1,14 @@
 import chalk from 'chalk'
 
-import type { TConsoleUtil } from './Console.type'
-
-import { CONSOLE_LOG_LEVEL } from './Console.const'
+import { TConsoleUtil, EConsoleLogLevel } from './Console.type'
 
 const Console: TConsoleUtil = {
   info: function(text, object) {
-    text = `${getLogLeveleTimeColor('INFO', getLocaleLogTimeString())} - ${colorizeLogText(text)}`
+    text = `${getLogLeveleTimeColor(EConsoleLogLevel.INFO, getLocaleLogTimeString())} - ${colorizeLogText(text)}`
     console.info(text, object || '')
   },
   error: function(text, object) {
-    text = `${getLogLeveleTimeColor('ERROR', getLocaleLogTimeString())} - ${colorizeLogText(text)}`
+    text = `${getLogLeveleTimeColor(EConsoleLogLevel.ERROR, getLocaleLogTimeString())} - ${colorizeLogText(text)}`
     console.info(text, object || '')
   }
 }
@@ -19,12 +17,14 @@ const getLocaleLogTimeString = (): string => {
   return new Date().toLocaleTimeString()
 }
 
-const getLogLeveleTimeColor = (logLevel: keyof typeof CONSOLE_LOG_LEVEL, timeText: string): string => {
+const getLogLeveleTimeColor = (logLevel: EConsoleLogLevel, timeText: string): string => {
   switch(logLevel) {
     case 'ERROR':
       return `${chalk.redBright(timeText)}`
     case 'INFO':
       return `${chalk.blueBright(timeText)}`
+    default: 
+      return timeText
   }
 }
 
