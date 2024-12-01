@@ -22,4 +22,6 @@ export type TFileSystemManipulate = {
   copyMany: (from: string[], to: string, options?: CopyOptions) => Promise<void>
   deleteOne: (from: string, options?: RmOptions) => Promise<void>
   deleteMany: (from: string[], options?: RmOptions) => Promise<void>
+  moveOne: (from: string, to: string) => Promise<void>
+  moveMany: (from: string[], to: string) => Promise<void>
 }

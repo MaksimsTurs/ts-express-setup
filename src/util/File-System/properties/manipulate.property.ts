@@ -30,6 +30,14 @@ const manipulate: TFileSystemManipulate = {
     for(let index: number = 0; index < from.length; index++) {
       await this.deleteOne(from[index], options)
     }
+  },
+  moveOne: async function(from, to) {
+    await fsPromises.rename(from, to)
+  },
+  moveMany: async function(from, to) {
+    for(let index: number = 0; index < from.length; index++) {
+      await this.moveOne(from[index], to)
+    }
   }
 }
 
