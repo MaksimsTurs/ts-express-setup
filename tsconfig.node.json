@@ -6,7 +6,8 @@
     "outDir": "output",
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "removeComments": true,
   },
   "include": ["./src/**/*.ts"]
 }

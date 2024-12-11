@@ -1,23 +1,24 @@
-import type { CopyOptions, RmOptions } from "fs"
+import type { CopyOptions, RmOptions, Stats } from "fs"
 
-export type TFileSystemUtil = {
-  is: TFileSystemIs
-  manipulate: TFileSystemManipulate
-  path: TFileSystemPath
+export type FileSystem = {
+  is: FileSystemIs
+  manipulate: FileSystemManipulate
+  path: FileSystemPath
+  getFileStatistic: (path: string) => Promise<Stats>
 }
 
-export type TFileSystemIs = {
+export type FileSystemIs = {
   directory: (path: string) => Promise<boolean>
   file: (path: string) => Promise<boolean>
 }
 
-export type TFileSystemPath = {
+export type FileSystemPath = {
   getName: (path: string) => string
   getFileExtention: (path: string) => string
   rename: (path: string, newName: string) => string
 }
 
-export type TFileSystemManipulate = {
+export type FileSystemManipulate = {
   copyOne: (from: string, to: string, options?: CopyOptions) => Promise<void>
   copyMany: (from: string[], to: string, options?: CopyOptions) => Promise<void>
   deleteOne: (from: string, options?: RmOptions) => Promise<void>

@@ -1,12 +1,14 @@
-import type { TFileSystemManipulate } from "../FileSystem.type";
+import type { FileSystemManipulate } from "../FileSystem.lib.type";
 
 import fsPromises from 'fs/promises'
 
 import is from './is.property'
+import path from './path.property'
 
-const manipulate: TFileSystemManipulate = {
+const manipulate: FileSystemManipulate = {
   copyOne: async function(from, to, options) {
-    await fsPromises.cp(from, to, options)
+    const dest: string = `${to}\\${path.getName(from)}`
+    await fsPromises.cp(from, dest, options)
   },
   copyMany: async function(from, to, options) {
     for(let index: number = 0; index < from.length; index++) {

@@ -1,6 +1,6 @@
-import type { TFileSystemPath } from "../FileSystem.type";
+import type { FileSystemPath } from "../FileSystem.lib.type";
 
-const path: TFileSystemPath = {
+const path: FileSystemPath = {
   getName: function(path) {
     const name = path.split(/\\|\//)
     return name[name.length - 1]

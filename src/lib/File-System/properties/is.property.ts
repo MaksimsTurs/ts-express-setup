@@ -1,8 +1,8 @@
-import type { TFileSystemIs } from "../FileSystem.type";
+import type { FileSystemIs } from "../FileSystem.lib.type";
 
 import fsPromises from 'fs/promises'
 
-const is: TFileSystemIs = {
+const is: FileSystemIs = {
   directory: async function(path) {
     return (await fsPromises.lstat(path)).isDirectory()
   },

@@ -1,10 +1,10 @@
-import type { EFormatNumberUnits, TFormatNumberOptions } from "./formatNumber.type";
+import type { FormatNumberUnits, FormatNumberOptions } from "../Numbers.lib.type";
 
-export default function formatNumber(num: number, options?: TFormatNumberOptions): string {
+export default function formatNumber(num: number, options?: FormatNumberOptions): string {
   if(options?.nullsCount) return processNulls(num, options.nullsCount)
   if(options?.unit) return processUnit(num, options.unit)
 
-  return num.toString()
+  return num.toFixed(2)
 }
 
 function processNulls(num: number, nullsCount: number): string {
@@ -19,7 +19,7 @@ function processNulls(num: number, nullsCount: number): string {
   return processedNum.join('')
 }
 
-function processUnit(num: number, unit: keyof typeof EFormatNumberUnits): string {
+function processUnit(num: number, unit: keyof typeof FormatNumberUnits): string {
   switch(unit) {
     case 'DATA_UNIT':
       const DATA_UNIT_KEYS: string[] = ['Bytes', 'KiB', 'MiB', 'GiB']
