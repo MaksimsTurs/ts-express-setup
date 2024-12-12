@@ -10,7 +10,7 @@ export default function formatNumber(num: number, options?: FormatNumberOptions)
 function processNulls(num: number, nullsCount: number): string {
   let processedNum: string[] = Array.from(num.toString())
 
-  if(processedNum.length >= nullsCount) return num.toString()
+  if(processedNum.length >= nullsCount) return processedNum.join('')
     
   for(let index: number = 0; index < nullsCount; index++) {
     if(!processedNum[index]) processedNum.unshift('0')

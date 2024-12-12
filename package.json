@@ -1,6 +1,6 @@
 {
   "name": "ts-express-setup",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./output/index.js",
   "scripts": {
     "dev:start": "npx nodemon",

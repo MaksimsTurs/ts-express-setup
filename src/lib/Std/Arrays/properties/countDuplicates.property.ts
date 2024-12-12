@@ -3,11 +3,8 @@ export default function countDuplicates<T>(arrayWithDuplicate: any[], find: (key
 
   for(let index: number = 0; index < arrayWithDuplicate.length; index++) {
     for(let jndex: number = 0; jndex < find.length; jndex++) {
-      const first = arrayWithDuplicate[index],
-            second = find[jndex]
-      
-      if(first === second) {
-        count?.[second] ? count[second]++ : count[second] = 1
+      if(arrayWithDuplicate[index] === find[jndex]) {
+        count?.[find[jndex]] ? count[find[jndex]]++ : count[find[jndex]] = 1
       }
     }
   }

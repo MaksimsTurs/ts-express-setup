@@ -14,7 +14,7 @@ class CacheStorage implements CacheStorageImpl {
     let value: T
 
     if(typeof callback === 'function') {
-      value = (callback as ((currentValue?: T) => T))(this.cacheStorage[key].value)
+      value = (callback as ((currentValue?: T) => T))(this.cacheStorage[key]?.value)
     } else {
       value = callback
     }
@@ -23,6 +23,8 @@ class CacheStorage implements CacheStorageImpl {
   }
 
   getByKey<T>(key: string): T | undefined {
+    if(!this.cacheStorage[key]) return undefined
+
     const { savedAt, value } = this.cacheStorage[key],
           expiredAt: number = this.cacheExpiredAfter
 
@@ -32,7 +34,7 @@ class CacheStorage implements CacheStorageImpl {
   }
 
   deleteByKey(key: string) {
-    this.cacheStorage[key] = { savedAt: "", value: undefined }
+    this.cacheStorage[key] = null
   }
 
   private isCacheExpired(savedAt: string, expiredAt: number) {
